@@ -20,7 +20,8 @@ function App() {
     setRouteData(null);
 
     try {
-      const response = await fetch(`http://localhost:8080/api/route?from=${from}&to=${to}&criteria=${criteria}`);
+      const backendUrl = import.meta.env.VITE_API_URL || 'https://backend-phi-steel-96.vercel.app';
+      const response = await fetch(`${backendUrl}/api/route?from=${from}&to=${to}&criteria=${criteria}`);
       const data = await response.json();
       
       if (!response.ok) {
