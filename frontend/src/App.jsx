@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Plane, Search, Clock, Navigation, CheckCircle2 } from 'lucide-react';
 import './App.css';
+import AirportInput from './components/AirportInput';
 
 function App() {
   const [from, setFrom] = useState('');
@@ -57,29 +58,21 @@ function App() {
       <div className="glass-panel" style={{ marginBottom: '2rem' }}>
         <form className="search-form" onSubmit={handleSearch}>
           <div className="input-group">
-            <div className="input-field">
-              <label>From (Origin)</label>
-              <input 
-                type="text" 
-                placeholder="e.g. DEL" 
-                value={from} 
-                onChange={(e) => setFrom(e.target.value.toUpperCase())}
-                maxLength={3}
-                required
-              />
-            </div>
+            <AirportInput 
+              label="From (Origin)"
+              value={from}
+              onChange={setFrom}
+              placeholder="e.g. Delhi or DEL"
+              required
+            />
             
-            <div className="input-field">
-              <label>To (Destination)</label>
-              <input 
-                type="text" 
-                placeholder="e.g. BOM" 
-                value={to} 
-                onChange={(e) => setTo(e.target.value.toUpperCase())}
-                maxLength={3}
-                required
-              />
-            </div>
+            <AirportInput 
+              label="To (Destination)"
+              value={to}
+              onChange={setTo}
+              placeholder="e.g. Mumbai or BOM"
+              required
+            />
           </div>
 
           <div className="input-field">
